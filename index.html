@@ -214,6 +214,10 @@
 
       &[data-step="register-form"] {
         div.buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+
           &:empty {
             display: none;
           }
@@ -231,6 +235,10 @@
           border-radius: 12px;
           padding: 1.5rem;
           background-color: #FDE6E3;
+
+          &:empty {
+            display: none;
+          }
         }
 
         div#attributeList {
