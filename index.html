@@ -40,7 +40,6 @@
         </div>
       </div>
       <script>
-        document.addEventListener("DOMContentLoaded", () => {
           const URL = window.location.href
           console.log(window.location);
           console.log(URL);
@@ -54,7 +53,6 @@
           } else if (URL.includes("/api/CombinedSigninAndSignup/unified?claimsexchange=ForgotPasswordExchange")) {
             document.getElementById("api").setAttribute("data-step", "forgot-password-form")
           }
-        });
       </script>
   </body>
   <style>
