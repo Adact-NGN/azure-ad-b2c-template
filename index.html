@@ -41,9 +41,8 @@
       </div>
       <script>
           const URL = window.location.href
-          console.log(window.location);
-          console.log(URL);
 
+          // Set the correct step based on the URL to help with CSS styling
           if (URL.includes("/oauth2/v2.0/authorize")) {
             document.getElementById("api").setAttribute("data-step", "login-method-selection")
           } else if (URL.includes("/api/ClaimsProviderSelection")) {
@@ -119,25 +118,29 @@
       border: 1px solid #C4C4D4;
       border-radius: 0.5rem;
       background-color: #FAFAFD;
+      width: 100%;
+      padding: 1.25rem 1.5rem;
     }
 
     div#api {
+      /* General shared styling */
+      div.intro {
+        &:first-child {
+          text-align: center;
+          font-size: 28px;
+          font-style: normal;
+          font-weight: 650;
+          line-height: 36px;
+          letter-spacing: -0.44px;
+        }
+      }
+
       /* First screen where selects Vipps or Manual login/signup */
-      &[data-name="SelfAsserted"] {
+      &[data-step="login-method-selection"] {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
   
-        & div.intro {
-          & p {
-            text-align: center;
-            font-size: 28px;
-            font-style: normal;
-            font-weight: 650;
-            line-height: 36px;
-            letter-spacing: -0.44px;
-          }
-        }
   
         & ul {
           display: flex;
@@ -153,66 +156,113 @@
       }
 
       /* Screen after selecting Manual login/signup */
-      form#localAccountForm {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-
-        div.intro {
-          & h2 {
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 650;
-            line-height: 30px;
-            letter-spacing: -0.44px;
-          }
-        }
-        div.entry {
+      &[data-step="login-or-register"] {
+        form#localAccountForm {
           display: flex;
           flex-direction: column;
           gap: 1.5rem;
-
-          div.entry-item {
+  
+          div.entry {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-
-            & input {
-              padding: 20px 24px;
-              width: 100%;
-            }
-            & div.error p {
-              font-size: 14px;
-              color: #FF0000;
-            }
-            & div.password-label {
+            gap: 1.5rem;
+  
+            div.entry-item {
               display: flex;
               flex-direction: column;
-              
+              gap: 0.5rem;
+  
+              & input {
+                padding: 20px 24px;
+                width: 100%;
+              }
+              & div.error p {
+                font-size: 14px;
+                color: #FF0000;
+              }
+              & div.password-label {
+                display: flex;
+                flex-direction: column;
+                
+                & a {
+                  font-size: 14px;
+                  color: #4078B7;
+                }
+              }
+            }
+            div.working {
+              &:empty {
+                display: none;
+              }
+            }
+            div.buttons {}
+          }
+          div.divider {
+            & h2 {
+              margin: auto;
+              width: fit-content;
+            }
+          }
+          div.create {
+            a#createAccount {
+              margin-left: 0.5rem;
+              color: #4078B7;
+            }
+          }
+        }
+      }
+
+      &[data-step="register-form"] {
+        div.buttons {
+          &:empty {
+            display: none;
+          }
+        }
+
+        div.error {
+          margin-bottom: 1rem;
+          border: 1px solid#A52C1A;
+          border-radius: 12px;
+          padding: 1.5rem;
+          background-color: #FDE6E3;
+        }
+
+        div#attributeList {
+          & ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            gap: 1.25rem;
+
+            & .attrEntry {
+              display: flex;
+              flex-direction: column;
+              gap: 0.75rem;
+            }
+
+            & li.TextBox {
               & a {
                 font-size: 14px;
                 color: #4078B7;
               }
+
+              .verificationSuccessText {
+                margin-bottom: 1rem;
+                border: 1px solid#A52C1A;
+                border-radius: 12px;
+                padding: 1.5rem;
+                background-color: #FDE6E3;
+              }
             }
           }
-          div.working {
-            &:empty {
-              display: none;
-            }
-          }
-          div.buttons {}
+
         }
-        div.divider {
-          & h2 {
-            margin: auto;
-            width: fit-content;
-          }
-        }
-        div.create {
-          a#createAccount {
-            margin-left: 0.5rem;
-            color: #4078B7;
-          }
+
+        div#buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
         }
       }
     }
