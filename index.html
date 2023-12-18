@@ -81,7 +81,6 @@
       padding: 3.5rem 4rem 3rem 4rem;
       border: 1px solid #EEEDF6;
       border-radius: 1.5rem;
-      min-height: 500px;
       background-color: #FFFFFF;
     }
 
@@ -100,11 +99,12 @@
       padding: 1rem 2.25rem;
       border-radius: 9999px;
       color: #FFFFFF;
-      background-color: #27262E;
+      background-color: #27262E !important;
       font-weight: 500;
     }
 
     #api {
+      /* First screen where selects Vipps or Manual login/signup */
       & .intro {
         margin-bottom: 2.5rem;
 
@@ -113,7 +113,7 @@
           font-size: 28px;
           font-style: normal;
           font-weight: 650;
-          line-height: 36px; /* 128.571% */
+          line-height: 36px;
           letter-spacing: -0.44px;
         }
       }
@@ -130,6 +130,50 @@
         }
       }
 
+      /* Screen after selecting Manual login/signup */
+      form#localAccountForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        
+        .intro {
+          & h2 {
+            margin-bottom: 1.5rem;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 650;
+            line-height: 30px;
+            letter-spacing: -0.44px;
+          }
+        }
+        .entry {
+          .entry-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            & label {
+              font-size: 14px;
+            }
+            & input {
+              padding: 20px 24px;
+              width: 100%;
+            }
+            & .error p {
+              font-size: 14px;
+              color: #FF0000;
+            }
+          }
+          .working {}
+          .buttons {}
+        }
+        .divider {
+          & h2 {}
+        }
+        .create {
+          a#createAccount {}
+        }
+      }
     }
   </style>
 </html>
