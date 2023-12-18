@@ -19,6 +19,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <!-- <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/> -->
   </head>
 
   <body>
@@ -26,7 +27,7 @@
         <div id="logo-wrapper">
           <img
             id="logo"
-            data-tenant-branding-logo="true"
+            data-tenant-branding-logo="false"
             src="https://raw.githubusercontent.com/Adact-NGN/azure-ad-b2c-template/main/public/logo.svg"
             alt="Company Logo"
           />
@@ -41,6 +42,11 @@
       </script> -->
   </body>
   <style>
+    body {
+      margin: 0;
+      font-family: Inter;
+    }
+
     #main {
       display: flex;
       flex-direction: column;
@@ -56,6 +62,11 @@
       display: flex;
       align-items: center;
       justify-content: start;
+    }
+
+    #logo {
+      width: auto;
+      height: 100px;
     }
 
     #app {
@@ -88,6 +99,22 @@
       border-radius: 9999px;
       color: #FFFFFF;
       background-color: #27262E;
+    }
+
+    #api {
+      & .intro p {
+        color: #27262E;
+        text-align: center;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 650;
+        line-height: 36px; /* 128.571% */
+        letter-spacing: -0.44px;
+      }
+      & ul {
+        list-style-type: none;
+      }
+
     }
   </style>
 </html>
