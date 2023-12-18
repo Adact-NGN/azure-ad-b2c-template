@@ -104,10 +104,12 @@
     }
 
     #api {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
       /* First screen where selects Vipps or Manual login/signup */
       & .intro {
-        margin-bottom: 2.5rem;
-
         & p {
           text-align: center;
           font-size: 28px;
@@ -138,7 +140,6 @@
         
         .intro {
           & h2 {
-            margin-bottom: 1.5rem;
             font-size: 24px;
             font-style: normal;
             font-weight: 650;
