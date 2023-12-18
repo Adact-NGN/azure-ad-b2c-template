@@ -122,9 +122,15 @@
       padding: 1.25rem 1.5rem;
     }
 
+    label {
+      font-size: 14px;
+    }
+
     div#api {
-      /* General shared styling */
+      /* General styling shared between steps */
       div.intro {
+        margin-bottom: 2rem;
+
         & p:first-child {
           text-align: center;
           font-size: 28px;
@@ -222,7 +228,7 @@
             display: none;
           }
 
-          &.sendButton {
+          & .sendButton {
             display: flex;
             margin: 0 auto;
             width: auto;
