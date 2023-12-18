@@ -19,6 +19,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <!-- Reset HTML awful base CSS -->
+    <link href="https://unpkg.com/tailwindcss@3.3.6/src/css/preflight.css" rel="stylesheet" type="text/css" data-preload="true"/>
     <!-- <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/> -->
   </head>
 
@@ -42,9 +44,14 @@
       </script> -->
   </body>
   <style>
+    html * {
+      font-family: Inter;
+      font-size: 16px;
+      color: #27262E;
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      font-family: Inter;
     }
 
     #main {
