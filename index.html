@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <script>
+      <script defer>
           const URL = window.location.href
 
           // Set the correct step based on the URL to help with CSS styling
@@ -53,11 +53,8 @@
             document.getElementById("api").setAttribute("data-step", "forgot-password-form")
           }
 
-          document.addEventListener("DOMContentLoaded", function() {
-            const buttonsElement = document.querySelector('#api > div.buttons')
-            
-            if (buttonsElement?.innerText === '') buttonsElement.style.display = 'none'
-          })
+          const buttonsElement = document.querySelector('#api > div.buttons')          
+          if (buttonsElement?.innerText === '') buttonsElement.style.display = 'none'
       </script>
   </body>
   <style>
