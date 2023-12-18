@@ -39,9 +39,21 @@
           </div>
         </div>
       </div>
-      <!-- <script>
-        $(document)?.ready(() => {});
-      </script> -->
+      <script>
+        $(document)?.ready(() => {
+          const URL = window.location.href
+
+          if (URL.contains("/oauth2/v2.0/authorize")) {
+            document.getElementById("api").setAttribute("data-step", "login-method-selection")
+          } else if (URL.contains("/api/ClaimsProviderSelection")) {
+            document.getElementById("api").setAttribute("data-step", "login-or-register")
+          } else if (URL.contains("/api/CombinedSigninAndSignup/unified?local=signup")) {
+            document.getElementById("api").setAttribute("data-step", "register-form")
+          } else if (URL.contains("/api/CombinedSigninAndSignup/unified?claimsexchange=ForgotPasswordExchange")) {
+            document.getElementById("api").setAttribute("data-step", "forgot-password-form")
+          }
+        });
+      </script>
   </body>
   <style>
     html {
