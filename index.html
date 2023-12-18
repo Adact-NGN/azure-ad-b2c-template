@@ -159,7 +159,6 @@
           display: flex;
           flex-direction: column;
           gap: 1.5rem;
-          margin-bottom: 1rem;
 
           div.entry-item {
             display: flex;
@@ -184,7 +183,11 @@
               }
             }
           }
-          div.working {}
+          div.working {
+            &:empty {
+              display: none;
+            }
+          }
           div.buttons {}
         }
         div.divider {
