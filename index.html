@@ -103,14 +103,20 @@
       font-weight: 500;
     }
 
-    #api {
+    input {
+      border: 1px solid #C4C4D4;
+      border-radius: 0.5rem;
+      background-color: #FAFAFD;
+    }
+
+    div#api {
       /* First screen where selects Vipps or Manual login/signup */
       &[data-name="SelfAsserted"] {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
   
-        & .intro {
+        & div.intro {
           & p {
             text-align: center;
             font-size: 28px;
@@ -140,7 +146,7 @@
         flex-direction: column;
         gap: 1.5rem;
 
-        .intro {
+        div.intro {
           & h2 {
             font-size: 24px;
             font-style: normal;
@@ -149,34 +155,47 @@
             letter-spacing: -0.44px;
           }
         }
-        .entry {
+        div.entry {
           margin-bottom: 1rem;
 
-          .entry-item {
+          div.entry-item {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
 
-            & label {
-              font-size: 14px;
-            }
             & input {
               padding: 20px 24px;
               width: 100%;
             }
-            & .error p {
+            & div.error p {
               font-size: 14px;
               color: #FF0000;
             }
+            & div.password-label {
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+              font-size: 14px;
+
+              & a {
+                color: #4078B7;
+              }
+            }
           }
-          .working {}
-          .buttons {}
+          div.working {}
+          div.buttons {}
         }
-        .divider {
-          & h2 {}
+        div.divider {
+          & h2 {
+            margin: auto;
+            width: fit-content;
+          }
         }
-        .create {
-          a#createAccount {}
+        div.create {
+          a#createAccount {
+            margin-left: 0.5rem;
+            color: #4078B7;
+          }
         }
       }
     }
