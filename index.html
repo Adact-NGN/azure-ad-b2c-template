@@ -52,6 +52,12 @@
           } else if (URL.includes("/api/CombinedSigninAndSignup/unified?claimsexchange=ForgotPasswordExchange")) {
             document.getElementById("api").setAttribute("data-step", "forgot-password-form")
           }
+
+          document.addEventListener("DOMContentLoaded", function() {
+            const buttonsElement = document.querySelector('#api > div.buttons')
+            
+            if (buttonsElement?.innerText === '') buttonsElement.style.display = 'none'
+          })
       </script>
   </body>
   <style>
