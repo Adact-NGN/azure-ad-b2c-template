@@ -187,6 +187,7 @@
           display: flex;
           flex-direction: column;
           gap: 1.5rem;
+          align-items: center;
   
           div.entry {
             display: flex;
@@ -230,9 +231,13 @@
             }
           }
           div.create {
-            a#createAccount {
-              margin-left: 0.5rem;
-              color: #4078B7;
+            p {
+              text-align: center;
+
+              a#createAccount {
+                margin-left: 0.5rem;
+                color: #4078B7;
+              }
             }
           }
         }
@@ -341,9 +346,9 @@
     The loaders use CSS custom properties (variables) to control the attributes of the loaders
     */
     :root {
-      --loader-width: 70px;
-      --loader-height: 70px;
-      --loader-color-primary: #27ae60;
+      --loader-width: 30px;
+      --loader-height: 30px;
+      --loader-color-primary: #FF6600;
       --loader-color-secondary: #eee;
       --line-width: 3px;
       --animation-duration: 2s;
