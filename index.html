@@ -313,15 +313,33 @@
               .verificationInfoText[aria-hidden=false], .verificationSuccessText[aria-hidden=false], .verificationErrorText[aria-hidden=false] {
                 display: block !important;
                 margin-bottom: 1rem;
-                /* border: 1px solid #A52C1A; */
                 border-width: 1px;
                 border-radius: 12px;
                 padding: 1.5rem;
-                /* background-color: #FDE6E3; */
 
                 &:empty {
                   display: none;
                 }
+              }
+
+              .verificationInfoText {
+                background-color: #E7EDF7;
+                border-color: #4078B7;
+              }
+
+              .verificationSuccessText {
+                background-color: #DDEEE5;
+                border-color: #468871;
+              }
+              
+              .verificationErrorText {
+                background-color: #FDE6E3;
+                border-color: #A52C1A;
+              }
+
+              /* Hide confusing message which appears before anything is done */
+              .verificationInfoText#email_intro {
+                display: none !important;
               }
             }
           }
