@@ -49,6 +49,15 @@
             document.getElementById("api").setAttribute("data-step", "login-or-register")
           } else if (URL.includes("/api/CombinedSigninAndSignup/unified?local=signup")) {
             document.getElementById("api").setAttribute("data-step", "register-form")
+
+            document.getElementById('email').addEventListener('input', function(event) {
+              try {
+                // Attempt to convert the input value to lowercase.
+                event.target.value = event?.target?.value?.toLowerCase() ?? '';
+              } catch (error) {
+                // In case of an error, don't modify the input value and move on.
+              }
+            });
           } else if (URL.includes("/api/CombinedSigninAndSignup/unified?claimsexchange=ForgotPasswordExchange")) {
             document.getElementById("api").setAttribute("data-step", "forgot-password-form")
           }
