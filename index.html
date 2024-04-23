@@ -370,6 +370,115 @@
           margin-top: 2.5em;
         } */
       }
+
+      &[data-step="forgot-password-form"] {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+
+        div.buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+
+          &:empty {
+            display: none;
+          }
+
+          &.verify button {
+            display: flex;
+            margin: 0 auto;
+            width: auto;
+          }
+        }
+
+        div.error {
+          display: block;
+          border: 1px solid#A52C1A;
+          border-radius: 12px;
+          padding: 1.5rem;
+          background-color: #FDE6E3;
+
+          &:empty {
+            display: none;
+          }
+        }
+
+        div#attributeList {
+          & ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            gap: 1.25rem;
+
+            & li {
+              width: 100%;
+            }
+
+            & .attrEntry {
+              display: flex;
+              flex-direction: column;
+              gap: 0.75rem;
+
+              & a {
+                font-size: 14px;
+                color: #4078B7;
+              }
+            }
+
+            & li.TextBox {
+              .verificationInfoText[aria-hidden=false], .verificationSuccessText[aria-hidden=false], .verificationErrorText[aria-hidden=false] {
+                display: block !important;
+                margin-bottom: 1rem;
+                border-width: 1px;
+                border-radius: 12px;
+                padding: 1.5rem;
+
+                &:empty {
+                  display: none;
+                }
+              }
+
+              .verificationInfoText {
+                background-color: #E7EDF7;
+                border-color: #4078B7;
+              }
+
+              .verificationSuccessText {
+                background-color: #DDEEE5;
+                border-color: #468871;
+              }
+              
+              .verificationErrorText {
+                background-color: #FDE6E3;
+                border-color: #A52C1A;
+              }
+
+              /* Hide confusing message which appears before anything is done */
+              .verificationInfoText#email_intro {
+                display: none !important;
+              }
+            }
+          }
+
+        }
+
+        div#buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        /* div#verifying_blurb {
+          color: white;
+          font-size: 18px;
+          font-weight: 400;
+          height: 100%;
+          margin-top: 2.5em;
+        } */
+      }
     }
 
     /* Pure CSS loader animation */
