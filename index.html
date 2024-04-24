@@ -410,7 +410,7 @@
 
       &[data-step="forgot-password-form"] {
         display: flex;
-        flex-direction: column;
+        flex-direction: row-reverse;
         gap: 1.5rem;
         width: 100%;
 
@@ -434,6 +434,10 @@
             color: #27262e;
             border-width: 1px;
           }
+
+          @media (max-width: 768px) {
+            flex-direction: column;
+          }
         }
 
         div.error {
@@ -450,6 +454,10 @@
 
         div#attributeList {
           padding-bottom: 2.5rem;
+
+          & .attrEntry {
+            display: none;
+          }
         }
 
         /* div#verifying_blurb {
