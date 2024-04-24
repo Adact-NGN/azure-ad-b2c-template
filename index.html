@@ -190,7 +190,6 @@
         &.verify button {
           display: flex;
           margin: 0 auto;
-          width: auto;
 
           &.sendButton {
             width: 100%;
@@ -370,6 +369,10 @@
           gap: 2rem;
         }
 
+        & .attrEntry .helpLink {
+          display: none;
+        }
+
         div.buttons {
           display: flex;
           flex-direction: column;
@@ -413,12 +416,6 @@
 
           &:empty {
             display: none;
-          }
-
-          &.verify button {
-            display: flex;
-            margin: 0 auto;
-            width: auto;
           }
 
           & button#cancel {
