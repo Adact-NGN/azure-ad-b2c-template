@@ -7,10 +7,23 @@
     <meta name="title" content="NG Login" />
     <meta property="og:title" content="NG Login" />
     <meta property="twitter:title" content="NG Login" />
-    <meta property="og:image" content="https://raw.githubusercontent.com/Adact-NGN/azure-ad-b2c-template/main/public/ng-logo-squared.png" />
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/Adact-NGN/azure-ad-b2c-template/main/public/ng-logo-squared.png" />
-    <link rel="icon" href="https://raw.githubusercontent.com/Adact-NGN/azure-ad-b2c-template/main/public/favicon-32x32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/Adact-NGN/azure-ad-b2c-template/main/public/apple-touch-icon.png" />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/Adact-NGN/azure-ad-b2c-template/main/public/ng-logo-squared.png"
+    />
+    <meta
+      property="twitter:image"
+      content="https://raw.githubusercontent.com/Adact-NGN/azure-ad-b2c-template/main/public/ng-logo-squared.png"
+    />
+    <link
+      rel="icon"
+      href="https://raw.githubusercontent.com/Adact-NGN/azure-ad-b2c-template/main/public/favicon-32x32.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://raw.githubusercontent.com/Adact-NGN/azure-ad-b2c-template/main/public/apple-touch-icon.png"
+    />
     <meta property="og:type" content="website" />
     <meta property="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,67 +33,71 @@
       rel="stylesheet"
     />
     <!-- Reset HTML awful base CSS -->
-    <link href="https://unpkg.com/tailwindcss@3.3.6/src/css/preflight.css" rel="stylesheet" type="text/css" data-preload="true"/>
+    <link
+      href="https://unpkg.com/tailwindcss@3.3.6/src/css/preflight.css"
+      rel="stylesheet"
+      type="text/css"
+      data-preload="true"
+    />
     <!-- <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/> -->
   </head>
 
   <body>
-      <div id="main">
-        <div id="logo-wrapper">
-          <img
-            id="logo"
-            data-tenant-branding-logo="false"
-            src="https://raw.githubusercontent.com/Adact-NGN/azure-ad-b2c-template/main/public/logo.svg"
-            alt="Company Logo"
-          />
-        </div>
-        <div id="app" role="presentation" >
-            <div id="api" data-name="SelfAsserted" role="main"></div>
-          </div>
-        </div>
+    <div id="main">
+      <div id="logo-wrapper">
+        <img
+          id="logo"
+          data-tenant-branding-logo="false"
+          src="https://raw.githubusercontent.com/Adact-NGN/azure-ad-b2c-template/main/public/logo.svg"
+          alt="Company Logo"
+        />
       </div>
-      <script defer>
-          const URL = window.location.href
+      <div id="app" role="presentation">
+        <div id="api" data-name="SelfAsserted" role="main"></div>
+      </div>
+    </div>
+    <script defer>
+      const URL = window.location.href;
 
-          // Set the correct step based on the URL to help with CSS styling
-          if (URL.includes("/oauth2/v2.0/authorize")) {
-            document.getElementById("api").setAttribute("data-step", "login-method-selection")
-          } else if (URL.includes("/api/ClaimsProviderSelection")) {
-            document.getElementById("api").setAttribute("data-step", "login-or-register")
-          } else if (URL.includes("/api/CombinedSigninAndSignup/unified?local=signup")) {
-            document.getElementById("api").setAttribute("data-step", "register-form")
+      // Set the correct step based on the URL to help with CSS styling
+      if (URL.includes("/oauth2/v2.0/authorize")) {
+        document.getElementById("api").setAttribute("data-step", "login-method-selection");
+      } else if (URL.includes("/api/ClaimsProviderSelection")) {
+        document.getElementById("api").setAttribute("data-step", "login-or-register");
+      } else if (URL.includes("/api/CombinedSigninAndSignup/unified?local=signup")) {
+        document.getElementById("api").setAttribute("data-step", "register-form");
 
-            document.getElementById('email').addEventListener('input', function(event) {
-              try {
-                // Attempt to convert the input value to lowercase.
-                event.target.value = event?.target?.value?.toLowerCase() ?? '';
-              } catch (error) {
-                // In case of an error, don't modify the input value and move on.
-              }
-            });
-          } else if (URL.includes("/api/CombinedSigninAndSignup/unified?claimsexchange=ForgotPasswordExchange")) {
-            document.getElementById("api").setAttribute("data-step", "forgot-password-form")
+        document.getElementById("email").addEventListener("input", function (event) {
+          try {
+            // Attempt to convert the input value to lowercase.
+            event.target.value = event?.target?.value?.toLowerCase() ?? "";
+          } catch (error) {
+            // In case of an error, don't modify the input value and move on.
           }
+        });
+      } else if (URL.includes("/api/CombinedSigninAndSignup/unified?claimsexchange=ForgotPasswordExchange")) {
+        document.getElementById("api").setAttribute("data-step", "forgot-password-form");
+      }
 
-          const buttonsElement = document.querySelector('#api > div.buttons')          
-          if (buttonsElement?.innerText === '') buttonsElement.style.display = 'none'
+      const buttonsElement = document.querySelector("#api > div.buttons");
+      if (buttonsElement?.innerText === "") buttonsElement.style.display = "none";
 
-          const queryParams = new URLSearchParams(window.location.search)
-          
-          const userType = queryParams.get('userType')
-          
-          if (userType === 'B2C') {
-            document.getElementById("api").setAttribute("data-user-type", "B2C")
-          } else {
-            document.getElementById("api").setAttribute("data-user-type", "B2B")
-          }
-      </script>
+      const queryParams = new URLSearchParams(window.location.search);
+
+      const userType = queryParams.get("userType");
+
+      if (userType === "B2C") {
+        document.getElementById("api").setAttribute("data-user-type", "B2C");
+      } else {
+        document.getElementById("api").setAttribute("data-user-type", "B2B");
+      }
+    </script>
   </body>
   <style>
     html {
       font-family: Inter;
       font-size: 16px;
-      color: #27262E;
+      color: #27262e;
     }
 
     #main {
@@ -90,7 +107,7 @@
       justify-content: start;
       min-height: 100vh;
       width: 100%;
-      background-color: #FAFAFD;
+      background-color: #fafafd;
       gap: 5rem;
     }
 
@@ -112,9 +129,9 @@
       justify-content: start;
       width: 550px;
       padding: 3.5rem 4rem 3rem 4rem;
-      border: 1px solid #EEEDF6;
+      border: 1px solid #eeedf6;
       border-radius: 1.5rem;
-      background-color: #FFFFFF;
+      background-color: #ffffff;
     }
 
     .heading {
@@ -129,35 +146,121 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      padding: 1rem 2.25rem;
+      padding: 0.5rem 1.125rem;
       border-radius: 9999px;
-      color: #FFFFFF;
-      background-color: #27262E !important;
+      color: #ffffff;
+      background-color: #1e304b !important;
       font-weight: 500;
     }
 
     input {
-      border: 1px solid #C4C4D4;
+      border: 1px solid #c4c4d4;
       border-radius: 0.5rem;
-      background-color: #FAFAFD;
+      background-color: #fff;
       width: 100%;
       padding: 1.25rem 1.5rem;
     }
 
     label {
-      font-size: 14px;
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.75rem;
+      letter-spacing: -0.09px;
     }
 
     div#api {
       /* General styling shared between steps */
       div.intro {
-        & p:first-child, & h2:first-child {
+        & p:first-child,
+        & h2:first-child {
           text-align: center;
-          font-size: 28px;
+          font-size: 1.75rem;
           font-style: normal;
-          font-weight: 650;
-          line-height: 36px;
+          font-weight: 600;
+          line-height: 2.25rem;
           letter-spacing: -0.44px;
+        }
+      }
+
+      div.buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+
+        &.verify button {
+          display: flex;
+          margin: 0 auto;
+          width: auto;
+
+          &.sendButton {
+            width: 100%;
+            background-color: #c9d9ee !important;
+          }
+        }
+
+        @media (min-width: 768px) {
+          flex-direction: column;
+        }
+      }
+
+      div#attributeList {
+        & ul {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: start;
+          gap: 1.25rem;
+
+          & li {
+            width: 100%;
+          }
+
+          & .attrEntry {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+
+            & a {
+              font-size: 14px;
+              color: #4078b7;
+            }
+          }
+
+          & li.TextBox {
+            .verificationInfoText[aria-hidden="false"],
+            .verificationSuccessText[aria-hidden="false"],
+            .verificationErrorText[aria-hidden="false"] {
+              display: block !important;
+              margin-bottom: 1rem;
+              border-width: 1px;
+              border-radius: 12px;
+              padding: 1.5rem;
+
+              &:empty {
+                display: none;
+              }
+            }
+
+            .verificationInfoText {
+              background-color: #e7edf7;
+              border-color: #4078b7;
+            }
+
+            .verificationSuccessText {
+              background-color: #ddeee5;
+              border-color: #468871;
+            }
+
+            .verificationErrorText {
+              background-color: #fde6e3;
+              border-color: #a52c1a;
+            }
+
+            /* Hide confusing message which appears before anything is done */
+            .verificationInfoText#email_intro {
+              display: none !important;
+            }
+          }
         }
       }
 
@@ -166,15 +269,14 @@
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-  
-  
+
         & ul {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: start;
           gap: 1.25rem;
-  
+
           & li {
             width: 100%;
           }
@@ -197,45 +299,50 @@
           flex-direction: column;
           gap: 1.5rem;
           align-items: center;
-  
+
           div.entry {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
 
             width: 100%;
-  
+
             div.entry-item {
               display: flex;
               flex-direction: column;
               gap: 0.5rem;
-  
+
               & input {
                 padding: 20px 24px;
                 width: 100%;
               }
               & div.error p {
                 font-size: 14px;
-                color: #FF0000;
+                color: #ff0000;
               }
               & div.password-label {
                 display: flex;
                 flex-direction: column;
-                
+
                 & a {
                   font-size: 14px;
-                  color: #4078B7;
+                  color: #4078b7;
                 }
               }
             }
             div.working {
               margin: auto;
-              
+
               &:empty {
                 display: none;
               }
             }
-            div.buttons {}
+            div.buttons {
+              & button {
+                width: 100%;
+                max-width: 200px;
+              }
+            }
           }
           div.divider {
             & h2 {
@@ -249,7 +356,7 @@
 
               a#createAccount {
                 margin-left: 0.5rem;
-                color: #4078B7;
+                color: #4078b7;
               }
             }
           }
@@ -273,19 +380,18 @@
           flex-direction: column;
           gap: 0.75rem;
 
+          & button {
+            width: 100%;
+            max-width: 200px;
+          }
+
           &:empty {
             display: none;
           }
 
-          &.verify button {
-            display: flex;
-            margin: 0 auto;
-            width: auto;
-          }
-
           & button#cancel {
             background-color: white !important;
-            color: #27262E;
+            color: #27262e;
             border-width: 1px;
           }
         }
@@ -295,71 +401,11 @@
           border: 1px solid#A52C1A;
           border-radius: 12px;
           padding: 1.5rem;
-          background-color: #FDE6E3;
+          background-color: #fde6e3;
 
           &:empty {
             display: none;
           }
-        }
-
-        div#attributeList {
-          & ul {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: start;
-            gap: 1.25rem;
-
-            & li {
-              width: 100%;
-            }
-
-            & .attrEntry {
-              display: flex;
-              flex-direction: column;
-              gap: 0.75rem;
-
-              & a {
-                font-size: 14px;
-                color: #4078B7;
-              }
-            }
-
-            & li.TextBox {
-              .verificationInfoText[aria-hidden=false], .verificationSuccessText[aria-hidden=false], .verificationErrorText[aria-hidden=false] {
-                display: block !important;
-                margin-bottom: 1rem;
-                border-width: 1px;
-                border-radius: 12px;
-                padding: 1.5rem;
-
-                &:empty {
-                  display: none;
-                }
-              }
-
-              .verificationInfoText {
-                background-color: #E7EDF7;
-                border-color: #4078B7;
-              }
-
-              .verificationSuccessText {
-                background-color: #DDEEE5;
-                border-color: #468871;
-              }
-              
-              .verificationErrorText {
-                background-color: #FDE6E3;
-                border-color: #A52C1A;
-              }
-
-              /* Hide confusing message which appears before anything is done */
-              .verificationInfoText#email_intro {
-                display: none !important;
-              }
-            }
-          }
-
         }
 
         /* div#verifying_blurb {
@@ -382,6 +428,11 @@
           flex-direction: column;
           gap: 0.75rem;
 
+          & button {
+            width: 100%;
+            max-width: 200px;
+          }
+
           &:empty {
             display: none;
           }
@@ -394,7 +445,7 @@
 
           & button#cancel {
             background-color: white !important;
-            color: #27262E;
+            color: #27262e;
             border-width: 1px;
           }
         }
@@ -404,7 +455,7 @@
           border: 1px solid#A52C1A;
           border-radius: 12px;
           padding: 1.5rem;
-          background-color: #FDE6E3;
+          background-color: #fde6e3;
 
           &:empty {
             display: none;
@@ -413,64 +464,6 @@
 
         div#attributeList {
           padding-bottom: 2.5rem;
-
-          & ul {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: start;
-            gap: 1.25rem;
-
-            & li {
-              width: 100%;
-            }
-
-            & .attrEntry {
-              display: flex;
-              flex-direction: column;
-              gap: 0.75rem;
-
-              & a {
-                font-size: 14px;
-                color: #4078B7;
-              }
-            }
-
-            & li.TextBox {
-              .verificationInfoText[aria-hidden=false], .verificationSuccessText[aria-hidden=false], .verificationErrorText[aria-hidden=false] {
-                display: block !important;
-                margin-bottom: 1rem;
-                border-width: 1px;
-                border-radius: 12px;
-                padding: 1.5rem;
-
-                &:empty {
-                  display: none;
-                }
-              }
-
-              .verificationInfoText {
-                background-color: #E7EDF7;
-                border-color: #4078B7;
-              }
-
-              .verificationSuccessText {
-                background-color: #DDEEE5;
-                border-color: #468871;
-              }
-              
-              .verificationErrorText {
-                background-color: #FDE6E3;
-                border-color: #A52C1A;
-              }
-
-              /* Hide confusing message which appears before anything is done */
-              .verificationInfoText#email_intro {
-                display: none !important;
-              }
-            }
-          }
-
         }
 
         /* div#verifying_blurb {
@@ -492,14 +485,16 @@
     :root {
       --loader-width: 30px;
       --loader-height: 30px;
-      --loader-color-primary: #FF6600;
+      --loader-color-primary: #ff6600;
       --loader-color-secondary: #eee;
       --line-width: 3px;
       --animation-duration: 2s;
       --loader-initial-scale: 0.1;
     }
 
-    .working, .working:before, .working:after {
+    .working,
+    .working:before,
+    .working:after {
       box-sizing: border-box;
       flex-grow: 0;
       flex-shrink: 0;
@@ -507,26 +502,26 @@
     /*
     In order to get optimal results, please only change the 
     variables above and don't change anything in the actual loader code
-    */   
+    */
 
     @keyframes circle-loader {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     .working {
-        margin: auto;
-        transform-origin: center center;
-        border: var(--line-width, 4px) solid var(--loader-color-secondary, #fff);
-        border-right-color: var(--loader-color-primary, #00f);
-        width: var(--loader-width, 100px);
-        height: var(--loader-height, 100px);
-        border-radius: 50%;
-        animation: circle-loader var(--animation-duration, 1s) infinite ease-out;
+      margin: auto;
+      transform-origin: center center;
+      border: var(--line-width, 4px) solid var(--loader-color-secondary, #fff);
+      border-right-color: var(--loader-color-primary, #00f);
+      width: var(--loader-width, 100px);
+      height: var(--loader-height, 100px);
+      border-radius: 50%;
+      animation: circle-loader var(--animation-duration, 1s) infinite ease-out;
     }
   </style>
 </html>
